@@ -1,0 +1,123 @@
+Google Classroom
+Classroom
+Analysis and Design of Algorithms
+4B
+Home
+Calendar
+Enrolled
+To-do
+T
+TFCS
+4B
+C
+Computer Networks-4B
+B
+A
+Analysis and Design of Algorithms
+4B
+C
+Constitution of India, Professional Ethics and Human Rights.
+Lateral Entry and Change of Branch (3rd Semester) (Feb-March 2023) (Oct 2022 - Feb 2023) Course Code: 22IC3HSCPH
+Archived classes
+Settings
+Announcement
+Radhika A D
+•
+Yesterday
+Dear Students
+I am here with posting the programs for Prims and Kruskals along with algorithm for Knapsack and Floyds algorithm.
+Kindly write the programs in the observation before coming to the lab. 
+
+
+The following is to be executed in the lab on tomorrow 4/08/23:
+
+1. Implement 0/1
+Knapsack problem using dynamic programming.(5M)
+2. Implement All Pair Shortest paths problem using Floyd’s algorithm.(5M)
+3. Find Minimum Cost
+Spanning Tree of a given undirected graph using Prim’s and Kruskal’s
+algorithm.(5M+5M)
+
+KRUSKAL.C
+C
+
+PRIMS.C
+C
+
+Knapsack and Floyds Algorithm.docx
+Word
+Class comments
+
+Add class comment…
+
+Dear Students I am here with posting the programs for Prims and Kruskals along with algorithm for Knapsack and Floyds algorithm. Kindly write the programs in the observation before coming to the lab.  The following is to be executed in the lab on tomorrow 4/08/23: 1. Implement 0/1 Knapsack problem using dynamic programming.(5M) 2. Implement All Pair Shortest paths problem using Floyd’s algorithm.(5M) 3. Find Minimum Cost Spanning Tree of a given undirected graph using Prim’s and Kruskal’s algorithm.(5M+5M)
+#include<stdio.h>
+#include<conio.h>
+
+int cost[10][10],vt[10],et[10][10],vis[10],j,n;
+int sum=0;
+int x=1;
+int e=0;
+void prims();
+
+void main()
+{
+   int i;
+   clrscr();
+   printf("enter the number of vertices\n");
+   scanf("%d",&n);
+   printf("enter the cost adjacency matrix\n");
+   for(i=1;i<=n;i++)
+   {
+       for(j=1;j<=n;j++)
+       {
+	  scanf("%d",&cost[i][j]);
+       }
+       vis[i]=0;
+    }
+    prims();
+    printf("edges of spanning tree\n");
+    for(i=1;i<=e;i++)
+    {
+	printf("%d,%d\t",et[i][0],et[i][1]);
+    }
+    printf("weight=%d\n",sum);
+    getch();
+}
+
+void prims()
+{
+   int s,min,m,k,u,v;
+   vt[x]=1;
+   vis[x]=1;
+   for(s=1;s<n;s++)
+   {
+       j=x;
+       min=999;
+       while(j>0)
+       {
+	   k=vt[j];
+	   for(m=2;m<=n;m++)
+	   {
+	     if(vis[m]==0)
+	     {
+		if(cost[k][m]<min)
+		{
+		   min=cost[k][m];
+		   u=k;
+		   v=m;
+		}
+	      }
+	 }
+	 j--;
+    }
+    vt[++x]=v;
+    et[s][0]=u;
+    et[s][1]=v;
+    e++;
+    vis[v]=1;
+    sum=sum+min;
+ }
+}
+PRIMS.C
+Displaying PRIMS.C.
